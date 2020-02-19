@@ -47,7 +47,7 @@ public class CreateIDNum {
 		//随机生成生日 1~99岁
 		long begin = System.currentTimeMillis() - 3153600000000L;//100年内
 		long end = System.currentTimeMillis() - 31536000000L; //1年内
-		long rtn = getRandomNum(begin,end);
+		long rtn = getRandomNum(begin, end);
 		Date date = new Date(rtn);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String birth = simpleDateFormat.format(date);
@@ -63,11 +63,11 @@ public class CreateIDNum {
 	 */
 	public static String makeIDNum(String birth, boolean male) {
 		StringBuilder sb = new StringBuilder();
-		int value = getRandomNum(0,Constants.ID_CITIES.length);
+		int value = getRandomNum(0, Constants.ID_CITIES.length);
 
 		sb.append(Constants.ID_CITIES[value]);
 		sb.append(birth);
-		value = getRandomNum(0,999);
+		value = getRandomNum(0, 999);
 		if (male && value % 2 == 0) {
 			value++;
 		}
@@ -85,9 +85,16 @@ public class CreateIDNum {
 		return sb.toString();
 	}
 
+	/**
+	 * <p>生成指定年龄段的身份证号</p>
+	 *
+	 * @param min 最小年龄
+	 * @param max 最大年龄
+	 * @return 身份证号
+	 */
 	public static String makeIDNum(int min, int max) {
 
-		int genderNum = getRandomNum(1,2);
+		int genderNum = getRandomNum(1, 2);
 		boolean male = true;
 		if (genderNum % 2 == 0) {
 			male = false;
@@ -98,6 +105,36 @@ public class CreateIDNum {
 		date.setTime(new Date());// 设置当前日期
 		// 随机设置日期为前maxAge年到前minAge年的任意一天
 		int randomDay = 365 * min + new Random().nextInt(365 * (max - min));
+		date.set(Calendar.DATE, date.get(Calendar.DATE) - randomDay);
+		String birthDate = dft.format(date.getTime());
+		return makeIDNum(birthDate, male);
+
+	}
+
+	/**
+	 * <p>按指定年龄随机生成身份证号</p>
+	 * @param age 指定年龄
+	 * @return 身份证号
+	 */
+	public static String makeIDNum(int age) {
+
+		int genderNum = getRandomNum(1, 2);
+		boolean male = true;
+		if (genderNum % 2 == 0) {
+			male = false;
+		}
+
+		SimpleDateFormat dft = new SimpleDateFormat("yyyyMMdd");// 设置日期格式
+		Calendar date = Calendar.getInstance();
+		date.setTime(new Date());// 设置当前日期
+
+		// 设置日期为age年的任意一天
+		int randomDay;
+		if (age == 1){
+			randomDay =  getRandomNum(1, 365);
+		} else {
+			randomDay = getRandomNum((age - 1) * 365, age * 365);
+		}
 		date.set(Calendar.DATE, date.get(Calendar.DATE) - randomDay);
 		String birthDate = dft.format(date.getTime());
 		return makeIDNum(birthDate, male);
