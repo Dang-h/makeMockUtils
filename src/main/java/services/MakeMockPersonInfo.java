@@ -55,22 +55,6 @@ public class MakeMockPersonInfo {
 	 * @param num 邮箱最大长度
 	 * @return
 	 */
-	public static String makeEmail(int num) {
-
-		if (num < 6 || num > 64) {
-			System.out.println("邮箱长度不合法！长度应在6-64；此时设置为64");
-			num = 64;
-		}
-
-		int length = getRandomNum(6, num);
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < length; i++) {
-			int email_pre1 = (int) (Math.random() * Constants.EMAIL_PRE.length());
-			sb.append(Constants.EMAIL_PRE.charAt(email_pre1));
-		}
-		sb.append(Constants.EMAIL_SUFFIX[(int) (Math.random() * Constants.EMAIL_SUFFIX.length)]);
-		return sb.toString();
-	}
 
 
 	/**
