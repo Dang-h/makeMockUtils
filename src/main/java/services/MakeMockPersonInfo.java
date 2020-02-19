@@ -50,8 +50,8 @@ public class MakeMockPersonInfo {
 
 
 	/**
-	 *
 	 * <h2>生成指定长度邮箱</h2>
+	 *
 	 * @param num 邮箱最大长度
 	 * @return
 	 */
@@ -73,12 +73,17 @@ public class MakeMockPersonInfo {
 	}
 
 
-	public static String makeTel(){
+	/**
+	 * <h2>生成手机号码</h2>
+	 *
+	 * @return tel
+	 */
+	public static String makeTel() {
 
-		int index=getRandomNum(0,Constants.TEL_PRE.length-1);
-		String first=Constants.TEL_PRE[index];
-		String second=String.valueOf(getRandomNum(1,9999)+10000).substring(1);
-		String third=String.valueOf(getRandomNum(1,9999)+10000).substring(1);
-		return first+second+third;
+		int index = getRandomNum(0, Constants.TEL_PRE.length - 1);
+		String first = Constants.TEL_PRE[index];
+		String second = String.valueOf(getRandomNum(1, 9999) + 10000).substring(1);
+		String third = String.valueOf(getRandomNum(1, 9999) + 10000).substring(1);
+		return first + second + third;
 	}
 }
