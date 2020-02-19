@@ -14,6 +14,7 @@ public class MakeMockPersonInfo {
 	public static String gender;
 
 	/**
+	 * <h2>生成人员姓名和性别</h2>
 	 * <h2>姓名</h2>
 	 */
 	public static String makeChineseName() {
@@ -50,6 +51,7 @@ public class MakeMockPersonInfo {
 
 	/**
 	 *
+	 * <h2>生成指定长度邮箱</h2>
 	 * @param num 邮箱最大长度
 	 * @return
 	 */
@@ -71,4 +73,12 @@ public class MakeMockPersonInfo {
 	}
 
 
+	public static String makeTel(){
+
+		int index=getRandomNum(0,Constants.TEL_PRE.length-1);
+		String first=Constants.TEL_PRE[index];
+		String second=String.valueOf(getRandomNum(1,9999)+10000).substring(1);
+		String third=String.valueOf(getRandomNum(1,9999)+10000).substring(1);
+		return first+second+third;
+	}
 }

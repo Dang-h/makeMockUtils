@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static services.MakeMockPersonInfo.makeChineseName;
-import static services.MakeMockPersonInfo.makeEmail;
+import static services.MakeMockPersonInfo.*;
 
 class TestMethod {
 
@@ -19,4 +18,12 @@ class TestMethod {
 			System.out.print(makeEmail(7) + " ");
 		}
 	}
+	@Test
+	void testTel(){
+		for (int i = 0; i < 10; i++) {
+			System.out.print(makeTel() + " ");
+		}
+	}
+
+
 }
