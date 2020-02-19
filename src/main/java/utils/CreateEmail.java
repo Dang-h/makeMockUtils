@@ -45,4 +45,23 @@ public class CreateEmail {
 		sb.append(Constants.EMAIL_SUFFIX[(int) (Math.random() * Constants.EMAIL_SUFFIX.length)]);
 		return sb.toString();
 	}
+
+	/**
+	 * <p>生成指定用户名的邮箱</p>
+	 * @param name 用户名
+	 * @return 邮箱
+	 */
+	public static String makeEmail(String name) {
+		int num = name.length();
+		if (num < 6 || num > 32) {
+			System.out.println("邮箱长度不合法！长度应在6-32；此时设置为32");
+			num = 32;
+		}
+
+		int length = getRandomNum(6, num);
+		StringBuffer sb = new StringBuffer();
+		sb.append(name);
+		sb.append(Constants.EMAIL_SUFFIX[(int) (Math.random() * Constants.EMAIL_SUFFIX.length)]);
+		return sb.toString();
+	}
 }

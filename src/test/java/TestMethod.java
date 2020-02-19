@@ -21,7 +21,8 @@ class TestMethod {
 	void testEmail(){
 		for (int i = 0; i < 10; i++) {
 //			System.out.print(makeEmail(7) + " ");
-			System.out.println(makeEmail());
+//			System.out.println(makeEmail());
+			System.out.println(makeEmail("54danghao"));
 		}
 	}
 	@Test
