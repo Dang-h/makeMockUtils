@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import utils.CreateChineseName;
 import utils.CreateTel;
 
 
@@ -8,7 +7,7 @@ import static utils.CreateChineseName.gender;
 import static utils.CreateChineseName.makeChineseName;
 import static utils.CreateEmail.makeEmail;
 import static utils.CreateIDNum.makeIDNum;
-import static utils.CreateTel.getTel;
+import static utils.CreateTel.makeTel;
 
 class TestMethod {
 
@@ -52,7 +51,7 @@ class TestMethod {
 	@Test
 	void testTel(){
 		for (int i = 0; i < 10; i++) {
-			System.out.println(getTel(176));;
+			System.out.println(CreateTel.makeTel(176));;
 		}
 	}
 
