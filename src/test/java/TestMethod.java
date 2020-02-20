@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Test;
+import utils.CreateChineseName;
 
 
 //import static services.MakeMockPersonInfo.makeTel;
+import static utils.CreateChineseName.gender;
 import static utils.CreateChineseName.makeChineseName;
 import static utils.CreateEmail.makeEmail;
 import static utils.CreateIDNum.makeIDNum;
@@ -11,12 +13,13 @@ class TestMethod {
 	@Test
 	void testName() {
 		for (int i = 0; i < 10; i++) {
-//		System.out.print(makeChineseName() + " ");
-			System.out.print(makeChineseName() + " ");
-			System.out.print('|');
-			System.out.print(makeChineseName(true) + " ");
-			System.out.print('|');
-			System.out.print(makeChineseName("党") + " ");
+//		System.out.print(makeChineseName() + " " + gender  + " ");
+		System.out.print(makeChineseName("党") + " " + gender  + " ");
+
+//			System.out.print('|');
+//			System.out.print(makeChineseName(true) + " ");
+//			System.out.print('|');
+//			System.out.print(makeChineseName("党") + " ");
 
 		}
 	}

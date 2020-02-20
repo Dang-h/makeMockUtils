@@ -46,4 +46,8 @@ public class Constants {
 	public static final char[] ID_CALC_R = {'1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2'};
 
 
+	/**
+	 * <h2>性别：0：女，1：男</h2>
+	 */
+	public static final String[] GENDER = {"女", "男"};
 }
