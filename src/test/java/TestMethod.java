@@ -42,7 +42,8 @@ class TestMethod {
 	@Test
 	void testID() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println(makeIDNum(1));
+			System.out.println(makeIDNum("19491001"));
+//			System.out.println(makeIDNum(1,2,false));
 		}
 	}
 

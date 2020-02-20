@@ -22,7 +22,6 @@ import static utils.RandomNum.getRandomNum;
  */
 public class CreateIDNum {
 
-
 	/**
 	 * <P>随机生成身份证号</P>
 	 *
@@ -44,6 +43,7 @@ public class CreateIDNum {
 	 * @return 身份证号
 	 */
 	public static String makeIDNum(boolean male) {
+
 		//随机生成生日 1~99岁
 		long begin = System.currentTimeMillis() - 3153600000000L;//100年内
 		long end = System.currentTimeMillis() - 31536000000L; //1年内
@@ -51,22 +51,52 @@ public class CreateIDNum {
 		Date date = new Date(rtn);
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
 		String birth = simpleDateFormat.format(date);
+
 		return makeIDNum(birth, male);
 	}
 
 	/**
-	 * <P>指定出生日期和性别随机生成省份证号</P>
+	 * <P>指定出生日期和性别随机生成身份证号</P>
 	 *
-	 * @param birth 出生日期：20001010
+	 * @param birth 出生日期：19491001
 	 * @param male  性别
 	 * @return 身份证号
 	 */
 	public static String makeIDNum(String birth, boolean male) {
+
 		StringBuilder sb = new StringBuilder();
 		int value = getRandomNum(0, Constants.ID_CITIES.length);
 
 		sb.append(Constants.ID_CITIES[value]);
 		sb.append(birth);
+
+		return getGender(sb, male);
+	}
+
+	/**
+	 * <p>指定出生日期随机生成身份证号</p>
+	 *
+	 * @param birth 出生日期：19491001
+	 * @return 身份证号
+	 */
+	public static String makeIDNum(String birth) {
+
+		StringBuilder sb = new StringBuilder();
+		int value = getRandomNum(0, Constants.ID_CITIES.length);
+		boolean male;
+
+		sb.append(Constants.ID_CITIES[value]);
+		sb.append(birth);
+
+		int genderNum = getRandomNum(0, 1);
+		male = genderNum != 0;
+
+		return getGender(sb, male);
+	}
+
+	private static String getGender(StringBuilder sb, boolean male) {
+
+		int value;
 		value = getRandomNum(0, 999);
 		if (male && value % 2 == 0) {
 			value++;
@@ -81,7 +111,9 @@ public class CreateIDNum {
 		} else {
 			sb.append("00").append(value);
 		}
+
 		sb.append(calcTrailingNumber(sb));
+
 		return sb.toString();
 	}
 
@@ -103,16 +135,54 @@ public class CreateIDNum {
 		SimpleDateFormat dft = new SimpleDateFormat("yyyyMMdd");// 设置日期格式
 		Calendar date = Calendar.getInstance();
 		date.setTime(new Date());// 设置当前日期
-		// 随机设置日期为前maxAge年到前minAge年的任意一天
+
+		return getIDNum(min, max, male, dft, date);
+
+	}
+
+	/**
+	 * @param min  年龄最小值
+	 * @param max  年龄最大值
+	 * @param male 性别
+	 * @param dft  日期格式：yyyyMMdd
+	 * @param date 当前日期
+	 * @return 身份证号
+	 */
+	private static String getIDNum(int min, int max, boolean male, SimpleDateFormat dft, Calendar date) {
+
 		int randomDay = 365 * min + new Random().nextInt(365 * (max - min));
 		date.set(Calendar.DATE, date.get(Calendar.DATE) - randomDay);
 		String birthDate = dft.format(date.getTime());
+
 		return makeIDNum(birthDate, male);
+	}
+
+
+	/**
+	 * <p>指定年龄段和性别生成随机身份证</p>
+	 *
+	 * @param min  年龄段最小值
+	 * @param max  年龄段最大值
+	 * @param male 性别
+	 * @return 身份证号
+	 */
+	public static String makeIDNum(int min, int max, Boolean male) {
+
+		if (!male) {
+			male = false;
+		}
+
+		SimpleDateFormat dft = new SimpleDateFormat("yyyyMMdd");// 设置日期格式
+		Calendar date = Calendar.getInstance();
+		date.setTime(new Date());// 设置当前日期
+
+		return getIDNum(min, max, male, dft, date);
 
 	}
 
 	/**
 	 * <p>按指定年龄随机生成身份证号</p>
+	 *
 	 * @param age 指定年龄
 	 * @return 身份证号
 	 */
@@ -130,8 +200,8 @@ public class CreateIDNum {
 
 		// 设置日期为age年的任意一天
 		int randomDay;
-		if (age == 1){
-			randomDay =  getRandomNum(1, 365);
+		if (age == 1) {
+			randomDay = getRandomNum(1, 365);
 		} else {
 			randomDay = getRandomNum((age - 1) * 365, age * 365);
 		}
@@ -154,6 +224,7 @@ public class CreateIDNum {
 
 		int[] n = new int[17];
 		int result = 0;
+
 		for (int i = 0; i < n.length; i++) {
 			n[i] = Integer.parseInt(String.valueOf(sb.charAt(i)));
 		}
