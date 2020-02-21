@@ -25,14 +25,14 @@ public class CreateChineseName {
 		// 名
 		String firstName = Constants.BOY;
 		int firstNameIndex = firstName.length();
-		int sex = getRandomNum(0, 1);
+		int sex = getRandomNum(0, 999);
 
-		if (sex == 0) {
+		if (sex % 2 == 0) {
 			firstName = Constants.GIRL;
 			firstNameIndex = firstName.length();
-			setGender(Constants.GENDER[sex]);
-		} else {
-			setGender(Constants.GENDER[sex]);
+			setGender(Constants.GENDER[0]);
+		} else if(sex % 2 == 1) {
+			setGender(Constants.GENDER[1]);
 		}
 
 		index = getRandomNum(0, firstNameIndex - 1);
@@ -100,7 +100,7 @@ public class CreateChineseName {
 	 * @param index          是否有名2
 	 * @return 姓名
 	 */
-	private static String getName(String lastName, String firstName, int firstNameIndex, int index) {
+	public static String getName(String lastName, String firstName, int firstNameIndex, int index) {
 		String second = firstName.substring(index, index + 1);
 		int hasThird = getRandomNum(0, 1);
 		String third = "";
