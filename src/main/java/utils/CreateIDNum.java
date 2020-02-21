@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import static utils.CreateChineseName.gender;
 import static utils.RandomNum.getRandomNum;
 
 /**
@@ -100,9 +101,11 @@ public class CreateIDNum {
 		value = getRandomNum(0, 999);
 		if (male && value % 2 == 0) {
 			value++;
+			gender = Constants.GENDER[1];
 		}
 		if (!male && value % 2 == 1) {
 			value++;
+			gender = Constants.GENDER[0];
 		}
 		if (value >= 100) {
 			sb.append(value);
