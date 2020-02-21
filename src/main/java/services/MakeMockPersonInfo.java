@@ -1,65 +1,42 @@
-//package services;
-//
-//
-//import constants.Constants;
-//
-//import static utils.RandomNum.getRandomNum;
-//
-//public class MakeMockPersonInfo {
-//
-//
-//	/**
-//	 * <h2>性别</h2>
-//	 */
-//	public static String gender;
-//
-//	/**
-//	 * <h2>生成人员姓名和性别</h2>
-//	 * <h2>姓名</h2>
-//	 */
-//	public static String makeChineseName() {
-//
-//		int index = getRandomNum(0, Constants.LASTNAME.length() - 1);
-//		// 姓
-//		String lastName = Constants.LASTNAME.substring(index, index + 1);
-//		int sex = getRandomNum(0, 1);
-//
-//		// 名
-//		String firstName = Constants.BOY;
-//		int firstNameCount = Constants.BOY.length();
-//
-//		// 性别
-//		if (sex == 0) {
-//			firstName = Constants.GIRL;
-//			firstNameCount = Constants.GIRL.length();
-//			gender = "女";
-//		} else {
-//			gender = "男";
-//		}
-//
-//		return getString(lastName, firstName, firstNameCount);
-//	}
-//
-//
-//	/**
-//	 * <h2>生成指定长度邮箱</h2>
-//	 *
-//	 * @param num 邮箱最大长度
-//	 * @return
-//	 */
-//
-//
-//	/**
-//	 * <h2>生成手机号码</h2>
-//	 *
-//	 * @return tel
-//	 */
-//	public static String makeTel() {
-//
-//		int index = getRandomNum(0, Constants.TEL_PRE.length - 1);
-//		String first = Constants.TEL_PRE[index];
-//		String second = String.valueOf(getRandomNum(1, 9999) + 10000).substring(1);
-//		String third = String.valueOf(getRandomNum(1, 9999) + 10000).substring(1);
-//		return first + second + third;
-//	}
-//}
+package services;
+
+
+import constants.Constants;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+import static utils.CreateChineseName.gender;
+import static utils.CreateChineseName.makeChineseName;
+import static utils.CreateEmail.makeEmail;
+import static utils.CreateIDNum.makeIDNum;
+import static utils.CreateTel.makeTel;
+import static utils.RandomNum.getRandomNum;
+
+public class MakeMockPersonInfo {
+
+	public static void getPersonInfo(int num){
+		for (int i = 0; i < num; i++) {
+			System.out.println(getPersonInfo());
+		}
+	}
+
+	private static ArrayList<Object> getPersonInfo() {
+
+		ArrayList<Object> info = new ArrayList<>();
+
+		info.add(makeId());
+		info.add(makeChineseName());
+		info.add(gender);
+		info.add(makeIDNum());
+		info.add(makeTel());
+		info.add(makeEmail());
+
+		return info;
+	}
+
+	private static String makeId() {
+		String uuid = UUID.randomUUID().toString();
+		return uuid.replace("-", "");
+	}
+}

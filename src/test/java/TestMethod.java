@@ -3,6 +3,7 @@ import utils.CreateTel;
 
 
 //import static services.MakeMockPersonInfo.makeTel;
+import static services.MakeMockPersonInfo.getPersonInfo;
 import static utils.CreateChineseName.gender;
 import static utils.CreateChineseName.makeChineseName;
 import static utils.CreateEmail.makeEmail;
@@ -29,8 +30,8 @@ class TestMethod {
 	void testEmail() {
 		for (int i = 0; i < 10; i++) {
 //			System.out.print(makeEmail(7) + " ");
-//			System.out.println(makeEmail());
-			System.out.println(makeEmail("54danghao"));
+			System.out.println(makeEmail(18));
+//			System.out.println(makeEmail("54danghao"));
 		}
 	}
 //	@Test
@@ -53,6 +54,11 @@ class TestMethod {
 		for (int i = 0; i < 10; i++) {
 			System.out.println(CreateTel.makeTel(176));;
 		}
+	}
+
+	@Test
+	void testMakeInfo(){
+		getPersonInfo(10);
 	}
 
 

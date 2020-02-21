@@ -21,7 +21,7 @@ public class Constants {
 
 
 	/** <h2>邮箱构成前缀</h2>*/
-	public static final String EMAIL_PRE = "abcdefghijklmnopqrstuvwxyz_0123456789";
+	public static final String EMAIL_PRE = "abcdefghijklmnopqrstuvwxyz0123456789";
 	/** <h2>邮箱构成后缀</h2>*/
 	public static final String[] EMAIL_SUFFIX = ("@gmail.com,@yahoo.com,@msn.com,@hotmail.com,@aol.com,@ask.com,@live,com,@qq.com,@163.com,@163.net,@outlook.com,@cloud.com,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn").split(",");
 

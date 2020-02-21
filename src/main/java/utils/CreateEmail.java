@@ -23,7 +23,9 @@ public class CreateEmail {
 	}
 
 	private static String getEmail(int length) {
+
 		StringBuffer sb = new StringBuffer();
+
 		for (int i = 0; i < length; i++) {
 			int email_pre1 = (int) (Math.random() * Constants.EMAIL_PRE.length());
 			sb.append(Constants.EMAIL_PRE.charAt(email_pre1));
@@ -41,7 +43,7 @@ public class CreateEmail {
 	public static String makeEmail(int num) {
 
 		if (num < 6 || num > 16) {
-			System.out.println("邮箱长度不合法！长度应在6-16；此时设置为16");
+			System.out.println("邮箱长度不合法！长度应在6-16；此时设置为最长16");
 			num = 16;
 		}
 
