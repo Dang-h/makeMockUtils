@@ -9,6 +9,7 @@ import static utils.CreateChineseName.makeChineseName;
 import static utils.CreateEmail.makeEmail;
 import static utils.CreateIDNum.makeIDNum;
 import static utils.CreateTel.makeTel;
+import static utils.GetIDInfo.getBirAgeSex;
 
 class TestMethod {
 
@@ -59,6 +60,10 @@ class TestMethod {
 	@Test
 	void testMakeInfo(){
 		getPersonInfo(10);
+	}
+	@Test
+	void testGetIDInfo(){
+		System.out.println(getBirAgeSex("510705193702201717"));
 	}
 
 
